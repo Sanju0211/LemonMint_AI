@@ -50,7 +50,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 Get the project code from GitHub:
 
 ```bash
-git clone https://github.com/jesuscopado/local-voice-ai-agent.git
+git clone https://github.com/Sanju0211/LemonMint_AI.git
 cd local-voice-ai-agent
 ```
 
@@ -87,24 +87,12 @@ python local_voice_chat.py
 - Open the web interface at [http://127.0.0.1:7860](http://127.0.0.1:7860) (or the port shown in the terminal).  
 - Speak into your microphone to talk with the AI.
 
-### Advanced Voice Chat
-Run the advanced version (system prompt + `gemma3:4b` model):
-
 #### Web UI (default)
 ```bash
 python local_voice_chat_advanced.py
 ```
 Then open the URL that appears in your browser.
 
-#### Phone Number Interface
-Get a temporary phone number and call the AI:
-
-```bash
-python local_voice_chat_advanced.py --phone
-```
-The terminal prints the number; dial it and start speaking.
-
----
 
 ## 🛠 How It Works
 
