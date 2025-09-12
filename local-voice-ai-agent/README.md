@@ -44,93 +44,93 @@ brew install uv
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt install -y python3.13 python3.13-venv python3.13-dev
 curl -fsSL https://ollama.com/install.sh | sh
+```
 
 #### 2. Clone the Repository
 Get the project code from GitHub:
-bashgit clone https://github.com/jesuscopado/local-voice-ai-agent.git
+
+```bash
+git clone https://github.com/jesuscopado/local-voice-ai-agent.git
 cd local-voice-ai-agent
-3. Set Up the Environment
-Create a virtual environment and install dependencies:
-bashuv venv --python python3.13
+```
+
+#### 3. Set Up the Environment
+
+Create (and activate) a Python 3.13 virtual environment, then install the project dependencies:
+
+```bash
+uv venv --python python3.13
 source .venv/bin/activate
 uv sync
-4. Download Required Models
-Pull the necessary Ollama models for the application:
-bashollama pull gemma3:1b    # For basic version
-ollama pull gemma3:4b    # For advanced version (optional)
-Usage
-Launch the application based on your preferred mode:
-Basic Voice Chat
-Start the basic version with the gemma3:1b model:
-bashpython local_voice_chat.py
+```
 
-Access the web interface at http://127.0.0.1:7860 (or the port shown in the terminal).
-Speak into your microphone to interact with the AI.
+#### 4. Download Required Models
 
-Advanced Voice Chat
-Run the advanced version with a system prompt and the gemma3:4b model:
-Web UI (Default)
-bashpython local_voice_chat_advanced.py
+Pull the Ollama models you plan to use:
 
-Open the provided URL in your browser for an enhanced experience.
-
-Phone Number Interface
-Obtain a temporary phone number for voice interaction:
-bashpython local_voice_chat_advanced.py --phone
-
-The terminal will display a phone number. Call it to chat with the AI using your voice.
-
-🛠 How It Works
-The Local Voice AI Agent leverages a sophisticated pipeline to deliver real-time voice interactions:
-
-Audio Input: Your voice is captured via the web interface or phone.
-Speech-to-Text: The Moonshine model transcribes audio to text locally.
-LLM Processing: The transcribed text is sent to a local LLM (via Ollama) for response generation.
-Text-to-Speech: The Kokoro model converts the LLM’s response into audio.
-Audio Streaming: The response is streamed back to you using FastRTC over WebRTC.
-
-Technologies Used:
-
-FastRTC: WebRTC-based audio streaming.
-Moonshine: Local speech-to-text conversion.
-Kokoro: Local text-to-speech synthesis.
-Ollama: Local LLM inference with Gemma models.
-
-📖 Documentation
-
-Configuration: Customize models or prompts by editing local_voice_chat.py or local_voice_chat_advanced.py.
-Troubleshooting: Check the terminal for logs or refer to the Ollama documentation for model issues.
-Performance: For better speed, use an NVIDIA GPU with CUDA support.
-
-🤝 Contributing
-We welcome contributions! To get started:
-
-Fork the repository.
-Create a feature branch (git checkout -b feature-name).
-Commit your changes (git commit -m "Add feature").
-Push to the branch (git push origin feature-name).
-Open a pull request.
-
-Please adhere to the Contributor Covenant Code of Conduct.
-📜 License
-This project is licensed under the MIT License. See the LICENSE file for details.
-EOF
-text- This will create `README.md` with the content. Press `Ctrl+D` to finish.
-
-#### Verification
-After creating the file, check it:
 ```bash
-cat README.md
+ollama pull gemma3:1b    # basic version
+ollama pull gemma3:4b    # advanced version (optional)
+```
 
-Ensure the content matches the above.
+## Usage
 
-Additional Notes
+Launch the application in the mode you prefer:
 
-The file is now in your project directory and can be committed to Git if desired:
-bashgit add README.md
-git commit -m "Update README.md with professional version"
-git push origin main
+### Basic Voice Chat
+Start the basic version with the `gemma3:1b` model:
 
-If you need a .zip or other format, copy README.md to Windows, right-click, and select "Send to > Compressed (zipped) folder" in File Explorer.
+```bash
+python local_voice_chat.py
+```
 
-Let me know if you need help with the process or further adjustments! (Current time: 04:05 PM IST, Friday, September 12, 2025.)
+- Open the web interface at [http://127.0.0.1:7860](http://127.0.0.1:7860) (or the port shown in the terminal).  
+- Speak into your microphone to talk with the AI.
+
+### Advanced Voice Chat
+Run the advanced version (system prompt + `gemma3:4b` model):
+
+#### Web UI (default)
+```bash
+python local_voice_chat_advanced.py
+```
+Then open the URL that appears in your browser.
+
+#### Phone Number Interface
+Get a temporary phone number and call the AI:
+
+```bash
+python local_voice_chat_advanced.py --phone
+```
+The terminal prints the number; dial it and start speaking.
+
+---
+
+## 🛠 How It Works
+
+Real-time pipeline inside your machine:
+
+1. **Audio Input** – captured from browser or phone call.  
+2. **Speech-to-Text** – transcribed locally with *Moonshine*.  
+3. **LLM Processing** – text sent to *Ollama* (Gemma models).  
+4. **Text-to-Speech** – reply converted to audio with *Kokoro*.  
+5. **Audio Streaming** – sent back over *FastRTC* (WebRTC).
+
+**Core tech:**  
+FastRTC ‖ Moonshine STT ‖ Kokoro TTS ‖ Ollama LLM
+
+---
+
+## Documentation
+
+- **Configuration** – edit `local_voice_chat*.py` to change models / prompts.  
+- **Troubleshooting** – check terminal logs or [Ollama docs](https://ollama.ai/docs).  
+- **Performance** – plug in an NVIDIA GPU + CUDA for faster inference.
+
+---
+
+## License
+
+MIT – see [LICENSE](LICENSE) file for details.
+```
+
