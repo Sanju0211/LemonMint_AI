@@ -136,5 +136,4 @@ FastRTC ‖ Moonshine STT ‖ Kokoro TTS ‖ Ollama LLM
 ## License
 
 MIT – see [LICENSE](LICENSE) file for details.
-```
 
