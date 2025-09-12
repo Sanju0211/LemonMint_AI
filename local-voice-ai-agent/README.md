@@ -109,6 +109,10 @@ python local_voice_chat.py
 - Open the web interface at [http://127.0.0.1:7860] (or the port shown in the terminal).  
 - Speak into your microphone to talk with the AI.
 
+<img width="979" height="180" alt="image" src="https://github.com/user-attachments/assets/4ed15887-b55c-441d-a32e-9798f854f85d" />
+
+<img width="1352" height="707" alt="image" src="https://github.com/user-attachments/assets/34d86e99-b0df-4bce-b24e-358a4447b315" />
+
 
 ## 🛠 How It Works
 
