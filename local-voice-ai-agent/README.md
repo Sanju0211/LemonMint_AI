@@ -34,40 +34,39 @@ Follow these steps to set up the project on your local machine:
 #### 1. Install Prerequisites
 Install the required tools using your package manager. For WSL (Ubuntu), run:
 
-```markdown
-### 1. Update system packages
+##### 1. Update system packages
 ```bash
 sudo apt update
 ```
 
-### 2. Install core build & audio tools
+##### 2. Install core build & audio tools
 ```bash
 sudo apt install -y curl git build-essential software-properties-common libsndfile1 ffmpeg
 ```
 
-### 3. Install Homebrew (Linuxbrew)
+##### 3. Install Homebrew (Linuxbrew)
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-### 4. Install `uv` via Homebrew
+##### 4. Install `uv` via Homebrew
 ```bash
 brew install uv
 ```
 
-### 5. Add Python 3.13 PPA and install
+##### 5. Add Python 3.13 PPA and install
 ```bash
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt install -y python3.13 python3.13-venv python3.13-dev
 ```
 
-### 6. Install Ollama
+##### 6. Install Ollama
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
-```
+
 
 #### 2. Clone the Repository
 Get the project code from GitHub:
