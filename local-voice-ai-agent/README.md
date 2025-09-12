@@ -34,16 +34,39 @@ Follow these steps to set up the project on your local machine:
 #### 1. Install Prerequisites
 Install the required tools using your package manager. For WSL (Ubuntu), run:
 
+```markdown
+### 1. Update system packages
 ```bash
 sudo apt update
+```
+
+### 2. Install core build & audio tools
+```bash
 sudo apt install -y curl git build-essential software-properties-common libsndfile1 ffmpeg
+```
+
+### 3. Install Homebrew (Linuxbrew)
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
 source ~/.bashrc
+```
+
+### 4. Install `uv` via Homebrew
+```bash
 brew install uv
+```
+
+### 5. Add Python 3.13 PPA and install
+```bash
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt install -y python3.13 python3.13-venv python3.13-dev
+```
+
+### 6. Install Ollama
+```bash
 curl -fsSL https://ollama.com/install.sh | sh
+```
 ```
 
 #### 2. Clone the Repository
@@ -84,14 +107,8 @@ Start the basic version with the `gemma3:1b` model:
 python local_voice_chat.py
 ```
 
-- Open the web interface at [http://127.0.0.1:7860](http://127.0.0.1:7860) (or the port shown in the terminal).  
+- Open the web interface at [http://127.0.0.1:7860] (or the port shown in the terminal).  
 - Speak into your microphone to talk with the AI.
-
-#### Web UI (default)
-```bash
-python local_voice_chat_advanced.py
-```
-Then open the URL that appears in your browser.
 
 
 ## 🛠 How It Works
@@ -111,7 +128,7 @@ FastRTC ‖ Moonshine STT ‖ Kokoro TTS ‖ Ollama LLM
 
 ## Documentation
 
-- **Configuration** – edit `local_voice_chat*.py` to change models / prompts.  
+- **Configuration** – edit `local_voice_chat.py` to change models / prompts.  
 - **Troubleshooting** – check terminal logs or [Ollama docs](https://ollama.ai/docs).  
 - **Performance** – plug in an NVIDIA GPU + CUDA for faster inference.
 
