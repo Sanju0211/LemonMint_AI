@@ -18,7 +18,8 @@ Each model gets the full chat context, even when it wasn’t active earlier.
 
 ## 📸 Screenshot
 
-<img width="1368" height="698" alt="image" src="https://github.com/user-attachments/assets/24f17fe6-3c46-4717-a368-1b0330a547c9" />
+<img width="1276" height="727" alt="image" src="https://github.com/user-attachments/assets/6f8614bb-6066-4618-b182-af8974767516" />
+<img width="1130" height="645" alt="image (1)" src="https://github.com/user-attachments/assets/ead7a833-2f2f-4a55-b861-d8712b49f8b2" />
 
 
 ---
