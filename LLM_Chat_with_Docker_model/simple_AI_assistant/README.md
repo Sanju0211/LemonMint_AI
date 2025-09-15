@@ -1,68 +1,104 @@
 # 🧠 Simple AI Assistant Docker App that Remembers
 
-This project is a **production-ready AI chat app** built with Docker Model Runner, Streamlit, and LangChain. It lets you talk to a local LLM running via Docker, or switch seamlessly to a large cloud-based model (like those on OpenRouter), all **while remembering your entire conversation history**. Each model will get the full chat context, even in moments when it wasn't participating in the conversation.
+This project is a **production-ready AI chat app** built with **Docker Model Runner**, **Streamlit**, and **LangChain**.
+It lets you talk to a **local LLM running via Docker**, or switch seamlessly to a **large cloud-based model (like OpenRouter)** — all while remembering your entire conversation history.
+Each model gets the full chat context, even when it wasn’t active earlier.
 
-## 🎥 Video Tutorial
-
-To build this application step by step, please watch my YouTube tutorial below. It will explain all the app processes, and the logic behind them.
-
-<a href="https://youtu.be/oIqF0z2UhDM" target="_blank"><img width="600" alt="LLM Chat App with Memory thumbnail" src="https://github.com/user-attachments/assets/212c47bc-de25-4e35-9c23-e747a33d5d6e" /></a>
+---
 
 ## ⭐ Features
 
-1. Run local open-source LLMs with Docker Model Runner 🤖
-2. Clean Streamlit chat interface with message history 💻
-3. Seamless switch between local and cloud models 🕹️
-4. Context-passing for memory-aware responses 💡
-5. Fully containerized with Docker Compose  🐋
+✅ Run local open-source LLMs with Docker Model Runner 🤖
+✅ Clean Streamlit chat interface with message history 💻
+✅ Seamless switch between local and cloud models 🕹️
+✅ Context-passing for memory-aware responses 💡
+✅ Fully containerized with Docker Compose 🐋
 
+---
 
 ## 📸 Screenshot
 
-<img width="600" alt="screenshot of Simple AI Assistant Chat App" src="https://github.com/user-attachments/assets/789ec4fd-bf47-44e7-ad3a-052dc954582a" />
+<img width="1368" height="698" alt="image" src="https://github.com/user-attachments/assets/24f17fe6-3c46-4717-a368-1b0330a547c9" />
+
+
+---
 
 ## ⚡️ Quick Start
 
 ### 1️⃣ Prerequisites
 
-- [Docker Desktop](https://www.docker.com) installed and updated to current version.
-- Docker Model Runner **enabled** in Docker Desktop (see [official docs](https://dockr.ly/4nT2saM))
+* Install the latest **Docker Desktop (v4.45+)**
+* Enable **WSL 2** integration (Windows only)
+* Ensure **Docker Model Runner** is active:
 
-### 2️⃣ Clone This Repo
+```bash
+docker model status
+```
 
-<pre>
+✅ Output should say: `Docker Model Runner is running`
+
+---
+
+### 2️⃣ Enable & Test Models
+
+Pull a model (e.g., **Gemma3**) from Docker’s Model Catalog:
+
+```bash
+# Pull model
+docker model pull ai/gemma3
+
+# Verify
+docker model list
+
+# Quick test with curl
+curl http://model-runner.docker.internal/engines/llama.cpp/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+        "model": "ai/gemma3",
+        "messages": [{"role": "user", "content": "Hello, explain Docker in one line."}]
+      }'
+```
+
+---
+
+### 3️⃣ Clone This Repo
+
+```bash
 git clone https://github.com/MariyaSha/simple_AI_assistant.git
-simple_AI_assistant
-</pre>
+cd simple_AI_assistant
+```
 
-### 3️⃣ Create a `.env` File
+---
+
+### 4️⃣ Create a `.env` File
 
 Create a file named `.env` in the project root:
 
-<pre>
+```env
 LOCAL_BASE_URL=http://model-runner.docker.internal/engines/llama.cpp/v1
 REMOTE_BASE_URL=https://openrouter.ai/api/v1
 LOCAL_MODEL_NAME=ai/gemma3
 REMOTE_MODEL_NAME=qwen/qwen3-30b-a3b
 OPENROUTER_API_KEY=YOUR_OPENROUTER_API_KEY
-</pre>
+```
 
-- Replace `YOUR_OPENROUTER_API_KEY` with your actual OpenRouter key.  
-- Choose any local or remote model from:
-  - 👉 [Docker Model Catalog](https://dockr.ly/4eTeLQl)
-  - 👉 [OpenRouter](https://openrouter.ai)
+* Replace `YOUR_OPENROUTER_API_KEY` with your actual OpenRouter key.
+* Pick any model from 👉 [Docker Model Catalog](https://catalog.docker.com/) or 👉 [OpenRouter](https://openrouter.ai/).
 
-### 4️⃣ Run the App
+---
 
-<pre>
-docker compose up
-</pre>
+### 5️⃣ Run the App
 
-Then open your browser to:
+```bash
+docker compose up --build
+```
 
-http://localhost:8501  
+Then open in your browser:
+👉 [http://localhost:8501](http://localhost:8501)
 
 ✅ Your AI chat app is ready to use!
+
+---
 
 ## 🗂️ Project Structure
 
@@ -75,39 +111,78 @@ http://localhost:8501
 └── .env                  # Environment variables (you create this)
 ```
 
+---
 
 ## 🧩 How It Works
 
-- The **llm** service in `docker-compose.yaml` uses Docker Model Runner to serve a local LLM (e.g. Gemma).
-- The **ai-app** service is a Streamlit web app that:
-  - Stores message history in session state
-  - Passes the entire chat context to the LLM for memory-aware responses
-  - Lets you switch between local and remote models with a simple checkbox
+* The **llm service** (from `docker-compose.yaml`) runs a local LLM using Docker Model Runner (e.g., Gemma).
+* The **ai-app service** is a Streamlit app that:
 
+  * Stores chat history in session state
+  * Passes the **entire conversation context** to the LLM
+  * Lets you **switch between local and remote models** with one checkbox
+
+---
 
 ## 🚀 Customization
 
-- **Change Local Model**  
-  Edit `LOCAL_MODEL_NAME` and `LOCAL_BASE_URL` in your `.env`.
+### 🔹 Change Local Model
 
-- **Change Remote Model**  
-  Edit `REMOTE_MODEL_NAME`, `REMOTE_BASE_URL`, and your `OPENROUTER_API_KEY`.
+Update in `.env`:
 
-- **Dependencies**  
-  Add any extra Python packages to `requirements.txt`.
+```env
+LOCAL_MODEL_NAME=ai/gemma3
+```
 
+### 🔹 Change Remote Model
+
+Update in `.env`:
+
+```env
+REMOTE_MODEL_NAME=qwen/qwen3-30b-a3b
+OPENROUTER_API_KEY=your-key
+```
+
+### 🔹 Add Python Dependencies
+
+Add to `requirements.txt` and rebuild:
+
+```bash
+docker compose build
+```
+
+---
+
+## 🧹 Cleanup
+
+When done, free up space:
+
+```bash
+docker compose down
+docker system prune -a
+docker volume prune
+```
+
+Check usage:
+
+```bash
+docker system df
+```
+
+---
 
 ## 📚 Helpful Links
 
-- 🐳 [Docker Model Runner Documentation](https://dockr.ly/4nT2saM)  
-- 🔎 [Find Models in Docker Catalog](https://dockr.ly/4eTeLQl)  
-- 🌐 [OpenRouter](https://openrouter.ai)  
-- 🐍 [Streamlit](https://streamlit.io)  
-- 🦜 [LangChain for Python](https://python.langchain.com)
+* 🐳 [Docker Model Runner Docs](https://docs.docker.com/models/)
+* 🔎 [Find Models in Docker Catalog](https://catalog.docker.com/)
+* 🌐 [OpenRouter](https://openrouter.ai/)
+* 🐍 [Streamlit](https://streamlit.io/)
+* 🦜 [LangChain](https://python.langchain.com/)
 
+---
 
-## 🤝 Contributing
+✨ With this setup, you now have your **own AI assistant** that runs locally or on the cloud — fully containerized and production-ready 🚀
 
-If you'd like to contribute, please create an issue and describe what you have in mind.
-<br>
-I'm trying to keep this repository as close as possible to the video workflow, but if you'd like to take it to the next level, I can split it in two.
+---
+
+Sanju, do you want me to **add a “Demo Commands” section** (with example `docker model pull ai/gemma3` + a sample assistant Q/A output) so it looks even stronger in your GitHub portfolio?
