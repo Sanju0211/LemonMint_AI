@@ -64,8 +64,8 @@ curl http://model-runner.docker.internal/engines/llama.cpp/v1/chat/completions \
 ### 3️⃣ Clone This Repo
 
 ```bash
-git clone https://github.com/MariyaSha/simple_AI_assistant.git
-cd simple_AI_assistant
+git clone https://github.com/Sanju0211/LemonMint_AI.git
+cd LLM_Chat_with_Docker_model/simple_AI_assistant
 ```
 
 ---
