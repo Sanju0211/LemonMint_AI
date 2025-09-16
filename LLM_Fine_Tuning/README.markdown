@@ -59,8 +59,8 @@ This project fine-tunes the `unsloth/gemma-3-2b-bnb-4bit` model on a custom data
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-repo/llm-fine-tuning-anamika.git
-   cd llm-fine-tuning-anamika
+   git clone https://github.com/Sanju0211/LemonMint_AI.git
+   cd LLM_Fine_Tuning
    ```
 
 2. **Set Up Virtual Environment** (recommended):
