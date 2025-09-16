@@ -1,4 +1,4 @@
-# LLM Fine-Tuning Project: Custom Gemma-3 Model for Anamika Dataset
+# LLM Fine-Tuning Project: Custom Gemma-3 Model for a specific Dataset
 
 ## Project Overview
 
