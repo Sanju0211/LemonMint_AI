@@ -81,7 +81,7 @@ The notebook (`resumebuilder.ipynb`) runs entirely in Google Collab, a free clou
 
 ### Sample Resume (resume_new.md)
 
-
+```
 # Shaw Talebi  
 
 **Email**: [shawhintalebi@gmail.com](mailto:shawhintalebi@gmail.com)  
@@ -133,7 +133,7 @@ The notebook (`resumebuilder.ipynb`) runs entirely in Google Collab, a free clou
 ---
 
 **References and additional information available upon request.**
-
+```
 
 ### Sample Job Description
 
@@ -172,4 +172,5 @@ If issues persist, check the Collab output for errors or search the error messag
 - **Privacy**: Uploads and processing occur in your Collab session; no data is shared externally except API calls to Gemini
 - **Limitations**: Free Gemini API has usage quotas; upgrade for heavy use
 - **Customization**: Edit Cell 3 for different Gemini models or prompt changes
+
 ```
