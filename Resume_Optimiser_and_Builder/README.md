@@ -173,4 +173,4 @@ If issues persist, check the Collab output for errors or search the error messag
 - **Limitations**: Free Gemini API has usage quotas; upgrade for heavy use
 - **Customization**: Edit Cell 3 for different Gemini models or prompt changes
 
-```
+
