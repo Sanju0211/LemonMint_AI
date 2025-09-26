@@ -183,10 +183,9 @@ MIT License - See [LICENSE](LICENSE) for details.
 
 ## Contact
 
-- **Author**: Sanju0211
 - **GitHub**: [Sanju0211/AI_Job_Market_Analysis](https://github.com/Sanju0211/AI_Job_Market_Analysis)
 - **Issues**: Report bugs or suggest features via GitHub Issues.
-- **Email**: [your.email@example.com](mailto:your.email@example.com) (replace with your contact).
+
 
 Happy analyzing! 🚀 Explore the AI job market with ease.
 
